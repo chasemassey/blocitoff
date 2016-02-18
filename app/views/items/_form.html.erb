@@ -1,7 +1,7 @@
 <%= form_for [current_user, @item], class: "form-horizontal" do |f| %>
   <div class="form-group">
     <%= f.label :name, "Create Item", class: "col-sm-1 control-label" %>
-      <div class="col-sm-5">
+      <div class="col-sm-6">
         <%= f.text_field :name, class: "form-control item",
         placeholder: "Enter your item here!"  %>
       </div>
