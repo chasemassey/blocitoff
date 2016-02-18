@@ -1,8 +1,21 @@
-<div class="page-header">
-  <h1>Items <small>Add some items</small></h1>
-</div>
-<div class="row">
-    <div class="col-md-6">
-        <%= render "form", item: Item.new, user: current_user %>
-    </div>
-</div>
+<div class="col-md-6">
+       <div class="media">
+         <div class="media-body">
+           <h4 class="media-heading">
+            Items you need to do:
+           </h4>
+            <ul>
+             <% current_user.items.each do |item| %>
+              <li>
+                <%= item.name%>
+                <%= link_to "", user_item_path(current_user, item),
+                method: :delete,
+                remote: true,
+                class: 'glyphicon glyphicon-ok' %>
+              </li>
+            <% end %>
+           </ul>
+         </div>
+       </div>
+     </div>
+ </div>

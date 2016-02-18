@@ -1,29 +1,31 @@
 class ItemsController < ApplicationController
 
-  before_action :authenticate_user!
-
-  def new
-    @user = current_user
-    @item = @user.items
+  def create
+    @item = current_user.items.build(item_params)
+    if @item.save
+      flash[:notice] = "Your item was saved!"
+    else
+      flash[:error] = "There was a problem saving your item!"
+    end
+    redirect_to user_path(current_user)
   end
 
-  def create
-      @item = Item.new
-      @item.name = params[:item][:name]
-      @user = current_user
-      @item.user = @user
+  def destroy
+    @item = current_user.items.find(params[:id])
 
-       if @item.save
-         flash[:notice] = "Item saved successfully."
+    if @item.destroy
+      flash[:notice] = "Item was removed."
+    else
+      flash[:error] = "Item couldn't be deleted. Try again."
+    end
 
-         redirect_to [@user]
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
 
-       else
-         flash[:alert] = "Item failed to save."
-
-        render :new
-       end
-
-   end
-
+  def item_params
+    params.require(:item).permit(:name)
+  end
 end
