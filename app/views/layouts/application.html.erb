@@ -7,30 +7,31 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+
+<body class="<%= @body_class %>">
   <div class="container">
       <ul class="nav nav-tabs">
         <li><%= link_to "Bloccit", root_path %></li>
         <li><%= link_to "About", welcome_about_path %></li>
         <li><%= link_to("Tasks", current_user, class: 'btn btn-primary') if current_user %></li>
       </ul>
-<body class="<%= @body_class %>">
-<div class="container">
-   <% if user_signed_in? %>
-     Signed in as: <strong> <%= current_user.email %></strong>
-     <ul class="nav nav-pills pull-right">
-       <li class="active"><%= link_to 'Edit profile',
-         edit_user_registration_path, :class => '' %> </li>
-       <li class="active"><%= link_to "Sign Out",
-         destroy_user_session_path, method: :delete, :class => '' %> </li>
-     </ul>
-   <% else %>
-     <ul class="nav nav-pills pull-right">
-       <li class="active"><%= link_to "Sign Up",
-         new_user_registration_path, :class => 'pull-right'  %> </li>
-       <li class="active"><%= link_to "Sign In",
-         new_user_session_path, :class => 'pull-right'  %> </li>
-     </ul>
-   <% end %>
+  <div class="container">
+     <% if user_signed_in? %>
+       Signed in as: <strong> <%= current_user.email %></strong>
+       <ul class="nav nav-pills pull-right">
+         <li class="active"><%= link_to 'Edit profile',
+           edit_user_registration_path, :class => '' %> </li>
+         <li class="active"><%= link_to "Sign Out",
+           destroy_user_session_path, method: :delete, :class => '' %> </li>
+       </ul>
+     <% else %>
+       <ul class="nav nav-pills pull-right">
+         <li class="active"><%= link_to "Sign Up",
+           new_user_registration_path, :class => 'pull-right'  %> </li>
+         <li class="active"><%= link_to "Sign In",
+           new_user_session_path, :class => 'pull-right'  %> </li>
+       </ul>
+     <% end %>
 
    <hr>
    <div class="flash">
