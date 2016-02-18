@@ -6,5 +6,6 @@ class CreateItems < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+    add_foreign_key :items, :users
   end
 end

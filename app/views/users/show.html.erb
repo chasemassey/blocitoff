@@ -1,25 +1,9 @@
-<h1><%= @user.email %></h1>
-
 <div class="row">
   <div class="col-md-3">
-    <p><%= @user.email %></p>
+    <p>Hello <%= ( current_user.email ) %></p><br>
   </div>
+</div>
 
-<%= render partial: 'items/form' %>
 
-  <div class="col-md-6">
-       <div class="media">
-         <div class="media-body">
-           <h4 class="media-heading">
-            Items you need to do:
-           </h4>
-           <ul>
-           <% @user.items.each do |item| %>
-           <li><%= item.name %></li>
-           <% end %>
-           </ul>
-         </div>
-       </div>
-
-     </div>
- </div>
+<div><%= render partial: 'items/form' %></div>
+<div><%= render partial: 'items/item' %></div>
