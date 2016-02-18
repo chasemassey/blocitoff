@@ -5,6 +5,21 @@
     <p><%= @user.email %></p>
   </div>
 
-   <div class="col-md-9">
-   </div>
+<%= render partial: 'items/form' %>
+
+  <div class="col-md-6">
+       <div class="media">
+         <div class="media-body">
+           <h4 class="media-heading">
+            Items you need to do:
+           </h4>
+           <ul>
+           <% @user.items.each do |item| %>
+           <li><%= item.name %></li>
+           <% end %>
+           </ul>
+         </div>
+       </div>
+
+     </div>
  </div>
