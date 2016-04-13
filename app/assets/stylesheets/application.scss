@@ -15,3 +15,36 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+$purple: #590D82;
+$magenta: #B61AAE;
+$pink: #F25D9C;
+$blue: #0C056D;
+$whiteish: #F9F7F7;
+
+.navbar {
+  background-color: $purple;
+  border-radius: 0;
+
+  a {
+    color: $whiteish;
+  }
+}
+
+.nav-pills {
+  margin-top: 4px;
+}
+
+.nav.nav-tabs {
+  border-bottom: 0;
+  display: inline-block;
+
+  > li > a {
+    &:hover {
+      background-color: transparent;
+      border: 1px solid transparent;
+      opacity: 0.8;
+      transition: opacity .3s linear;
+    }
+  }
+}
